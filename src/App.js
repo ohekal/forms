@@ -20,8 +20,15 @@ export default class App extends React.Component {
     event.preventDefault();
   };
 
+  componentDidMount() {
+    this.setState(JSON.parse(localStorage.getItem("formData")));
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("formData", JSON.stringify(this.state));
+  }
+
   render() {
-    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <input
